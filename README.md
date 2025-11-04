@@ -6,6 +6,8 @@ inovar. Em vez de criar um site estático, simplesmente informacional, vocês
 querem agora criar uma **aplicação web interativa**, gastando todo o
 JavaScript do universo.
 
+O grupo deve ser de no máximo 3 pessoas da mesma subturma.
+
 A diferença de um site estático para uma aplicação está em seu uso:
 
 - Um **site estático** simplesmente expõe informações e não possui
@@ -171,7 +173,7 @@ Alguns descuidos podem fazer com que sua nota fique muito abaixo do esperado:
 
 ## O que deve ser **entregue**
 
-Você deve publicar esse site usando [GitHub pages](https://docs.github.com/pt/pages/getting-started-with-github-pages/creating-a-github-pages-site). Ou seja, vá em configurações, "Pages" e defina a branch principal como a branch do github pages. 
+Você deve publicar esse site usando [GitHub pages](https://docs.github.com/pt/pages/getting-started-with-github-pages/creating-a-github-pages-site). Ou seja, vá em configurações, "Pages" e defina a branch principal como a branch do github pages. Além disso, você deve criar uma página `itens_opcionais.html` para demonstrar os itens opcionais.
 
 
 **Título do tópico**
