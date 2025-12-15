@@ -1,14 +1,103 @@
 body {
   margin: 0;
+  font-family: Arial, sans-serif;
   background: #111;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  color: white;
+  overflow: hidden;
 }
 
+button {
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+}
+
+/* ===== TELAS ===== */
+#customizacao, #jogo {
+  display: none;
+  text-align: center;
+}
+
+#customizacao {
+  display: block;
+  padding: 20px;
+}
+
+/* ===== CUSTOMIZAÇÃO ===== */
+.preview {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+#carroPreview {
+  width: 220px;
+  height: 70px;
+  background: red;
+  border-radius: 15px;
+  position: relative;
+}
+
+#vidro {
+  width: 80px;
+  height: 30px;
+  background: lightblue;
+  position: absolute;
+  top: -25px;
+  left: 70px;
+  border-radius: 8px;
+}
+
+.roda {
+  width: 35px;
+  height: 35px;
+  background: black;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -18px;
+}
+
+.r1 { left: 30px; }
+.r2 { right: 30px; }
+
+.roda.esportiva {
+  border: 4px solid silver;
+}
+
+#btnJogar {
+  margin-top: 25px;
+  padding: 12px 25px;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+/* ===== JOGO ===== */
 canvas {
+  display: block;
   background: #000;
-  border: 4px solid #fff;
-  box-shadow: 0 0 25px #0ff;
+}
+
+#btnCustomizar {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+
+/* ===== CONTROLES MOBILE ===== */
+.controles {
+  position: fixed;
+  bottom: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.controles button {
+  width: 60px;
+  height: 60px;
+  background: rgba(255,255,255,0.2);
+  color: white;
 }
