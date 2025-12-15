@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================
+   BODY
+========================= */
+body {
+  background: radial-gradient(circle at top, #001d3d, #000814);
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* =========================
+   TÍTULO
+========================= */
+h1 {
+  margin-top: 16px;
+  color: #00ffcc;
+}
+
+.info {
+  margin-bottom: 10px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* =========================
+   CONTAINER DO JOGO
+========================= */
+.game-container {
+  position: relative;
+  width: 960px;
+  height: 640px;
+}
+
+/* =========================
+   CANVAS
+========================= */
+canvas {
+  background: linear-gradient(to bottom, #000814, #001d3d);
+  border: 3px solid #00ffcc;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 255, 204, 0.4);
+}
+
+/* =========================
+   HUD
+========================= */
+.hud {
+  width: 960px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.hud span {
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* =========================
+   PAUSA E GAME OVER
+========================= */
+#pausa,
+#gameover {
+  position: absolute;
+  inset: 0;
+
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.75);
+  color: #00ffcc;
+  font-size: 36px;
+  text-align: center;
+  z-index: 10;
+}
+
+#pausa span {
+  font-size: 18px;
+  margin-top: 12px;
+  color: #ffffff;
+}
+
+/* =========================
+   GAME OVER BOTÃO
+========================= */
+#gameover button {
+  margin-top: 20px;
+  padding: 10px 24px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #00ffcc;
+  color: #000;
+}
+
+#gameover button:hover {
+  opacity: 0.85;
+}

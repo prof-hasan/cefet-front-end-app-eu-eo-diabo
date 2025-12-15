@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Jogo do Carro Customizável</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== TELA DE CUSTOMIZAÇÃO ===== -->
+<div id="customizacao">
+  <h2>🚗 Customizar Carro</h2>
+
+  <div class="preview">
+    <div id="carroPreview">
+      <div id="vidro"></div>
+      <div class="roda r1"></div>
+      <div class="roda r2"></div>
+    </div>
+  </div>
+
+  <label>Cor do carro</label><br>
+  <input type="color" id="corCarro"><br><br>
+
+  <label>Tipo de roda</label><br>
+  <select id="tipoRoda">
+    <option value="normal">Normal</option>
+    <option value="esportiva">Esportiva</option>
+  </select><br>
+
+  <button id="btnJogar">▶ Jogar</button>
+</div>
+
+<!-- ===== TELA DO JOGO ===== -->
+<div id="jogo">
+  <canvas id="game"></canvas>
+  <button id="btnCustomizar">⚙ Customizar</button>
+
+  <div class="controles">
+    <button id="esq">◀</button>
+    <button id="dir">▶</button>
+    <button id="tiro">🔥</button>
+  </div>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>

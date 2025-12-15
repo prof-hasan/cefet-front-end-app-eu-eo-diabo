@@ -1,0 +1,7 @@
+{
+  "ranking": [
+    { "nome": "Alpha", "pontos": 150 },
+    { "nome": "Beta", "pontos": 100 },
+    { "nome": "Gamma", "pontos": 50 }
+  ]
+}

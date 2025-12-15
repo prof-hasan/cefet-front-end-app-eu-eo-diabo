@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>🛸 UFO Shooter 2D</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>🛸 UFO Shooter 2D</h1>
+  <p class="info">
+    ↑ ↓ mover • Espaço atirar • P pausar • Reiniciar no Game Over
+  </p>
+
+  <!-- CONTAINER DO JOGO -->
+  <div class="game-container">
+
+    <!-- CANVAS HORIZONTAL -->
+    <canvas id="jogo" width="960" height="640"></canvas>
+
+    <!-- TELA DE PAUSA -->
+    <div id="pausa">
+      <div>⏸ JOGO PAUSADO</div>
+      <span>Pressione P para continuar</span>
+    </div>
+
+    <!-- GAME OVER -->
+    <div id="gameover">
+      <div>💀 GAME OVER</div>
+      <button onclick="reiniciarJogo()">Reiniciar</button>
+    </div>
+
+  </div>
+  <!-- HUD -->
+  <div class="hud">
+    <span id="pontuacao">Pontuação: 0</span>
+    <span id="vidas">Vidas: 3</span>
+  </div>
+
+  <ul id="ranking"></ul>
+<span id="recorde">Recorde: 0</span>
+  <script src="script.js"></script>
+</body>
+</html>
