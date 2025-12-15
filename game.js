@@ -3,7 +3,12 @@ let configCarro = {
   cor: "#00ffff",
   roda: "normal"
 };
+/* ================= Melhor Pontuação ================= */
+let recorde = 0;
 
+fetch("http://localhost:3000/score")
+  .then(res => res.json())
+  .then(data => recorde = data.recorde);
 /* ================= TELAS ================= */
 const telaCustom = document.getElementById("customizacao");
 const telaJogo = document.getElementById("jogo");
@@ -77,7 +82,7 @@ function gerarInimigo() {
     w: 60,
     h: 100,
     velocidade: 2 + Math.random() * 1.5,
-    cor: "red",
+    cor: corOposta(configCarro.cor),
     tempoTiro: 50 + Math.random() * 120
   });
 }
@@ -132,6 +137,15 @@ dir.ontouchend = () => teclas["ArrowRight"] = false;
 tiro.ontouchstart = () => teclas[" "] = true;
 tiro.ontouchend = () => teclas[" "] = false;
 
+function isMobile() {
+  return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+}
+
+if (!isMobile()) {
+  const controles = document.querySelector(".controles");
+  if (controles) controles.style.display = "none";
+}
+
 /* ================= INIMIGOS / TIROS ================= */
 function moverInimigos() {
   inimigos.forEach(i => {
@@ -161,7 +175,19 @@ function moverTiros() {
   tirosJogador = tirosJogador.filter(t => t.y > -50);
   tirosInimigos = tirosInimigos.filter(t => t.y < canvas.height + 50);
 }
+function corOposta(hex) {
+  hex = hex.replace("#", "");
 
+  let r = parseInt(hex.substring(0, 2), 16);
+  let g = parseInt(hex.substring(2, 4), 16);
+  let b = parseInt(hex.substring(4, 6), 16);
+
+  r = 255 - r;
+  g = 255 - g;
+  b = 255 - b;
+
+  return `rgb(${r}, ${g}, ${b})`;
+}
 /* ================= COLISÃO ================= */
 function colisao(a, b) {
   return (
@@ -192,7 +218,10 @@ function desenhar(obj) {
 function desenharHUD() {
   ctx.fillStyle = "white";
   ctx.font = "26px Arial";
-  ctx.fillText("Pontuação: " + pontuacao, 20, 40);
+  ctx.textAlign = "right";
+  ctx.fillText("Pontuação: " + pontuacao, canvas.width - 20, 40);
+  ctx.fillText("Recorde: " + recorde, canvas.width - 20, 70);
+  ctx.textAlign = "left"; // reset
 }
 
 /* ================= GAME LOOP ================= */
@@ -231,7 +260,7 @@ function gameLoop() {
   requestAnimationFrame(gameLoop);
 }
 
-/* ================= CONTROLE ================= */
+/* ================= INICIO / FIM / RESET ================= */
 function iniciarJogo() {
   jogador.x = canvas.width / 2 - jogador.w / 2;
   jogador.y = canvas.height - 140;
@@ -243,10 +272,41 @@ function iniciarJogo() {
 }
 
 function fimDeJogo() {
+  if (!jogoRodando) return;
+
   jogoRodando = false;
+
   ctx.fillStyle = "white";
   ctx.font = "60px Arial";
   ctx.fillText("GAME OVER", canvas.width / 2 - 180, canvas.height / 2);
+  ctx.font = "30px Arial";
+  ctx.fillText(
+    "Pontuação: " + pontuacao,
+    canvas.width / 2 - 90,
+    canvas.height / 2 + 50
+  );
+  fetch("http://localhost:3000/score", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ pontos: pontuacao })
+    });
+
+  if (!botaoReiniciar) {
+    botaoReiniciar = document.createElement("button");
+    botaoReiniciar.innerText = "🔁 Resetar";
+    botaoReiniciar.style.position = "fixed";
+    botaoReiniciar.style.left = "50%";
+    botaoReiniciar.style.top = "60%";
+    botaoReiniciar.style.transform = "translateX(-50%)";
+    botaoReiniciar.style.padding = "15px 30px";
+    botaoReiniciar.style.fontSize = "20px";
+    botaoReiniciar.style.borderRadius = "10px";
+    botaoReiniciar.style.zIndex = "999";
+
+    document.body.appendChild(botaoReiniciar);
+
+    botaoReiniciar.onclick = reiniciar;
+  }
 }
 
 gameLoop();
